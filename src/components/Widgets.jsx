@@ -8,7 +8,7 @@ import Visibility from '../components/Visibility'
 
 const Widgets = ({ weatherData }) => {
 	return (
-		<div className='grid grid-cols-3 gap-4'>
+		<div className='grid grid-cols-2 gap-6 w-full'>
 			<WindSpeed
 				speed={weatherData.wind_kph}
 				windDirection={weatherData.wind_dir}

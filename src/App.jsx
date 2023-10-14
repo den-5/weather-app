@@ -1,7 +1,11 @@
 import MainPage from './pages/MainPage'
 
 function App() {
-	return <MainPage />
+	return (
+		<div className='p-0 md:p-10'>
+			<MainPage />
+		</div>
+	)
 }
 
 export default App

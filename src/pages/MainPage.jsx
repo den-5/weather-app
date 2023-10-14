@@ -29,8 +29,14 @@ const MainPage = () => {
 	return (
 		<>
 			<CityContext.Provider value={setCityCoords}>
-				<FastInfo currentWeather={currentWeather} location={location} />
-				<Widgets weatherData={currentWeather} />
+				<div className='flex gap-x-24 flex-wrap md:flex-nowrap justify-between'>
+					<FastInfo
+						className='w-1/3 md:w-full md:ml-0 '
+						currentWeather={currentWeather}
+						location={location}
+					/>
+					<Widgets weatherData={currentWeather} />
+				</div>
 			</CityContext.Provider>
 		</>
 	)

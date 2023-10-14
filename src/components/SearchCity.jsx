@@ -23,8 +23,7 @@ const SearchCity = ({ input, setInput }) => {
 		<SearchBar
 			value={input}
 			setValue={setInput}
-			handleClick={e => {
-				e.preventDefault()
+			onSubmit={e => {
 				console.log('button click')
 				setValueChanged(!valueChanged)
 			}}

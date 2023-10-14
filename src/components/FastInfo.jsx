@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import dateUtils from '../utils/date-utils'
 import Icon from './UI/Icon'
-import SearchBar from './UI/SearchBar'
 import SearchCity from './SearchCity'
 
 const FastInfo = ({ currentWeather, location }) => {
@@ -10,20 +9,27 @@ const FastInfo = ({ currentWeather, location }) => {
 	const lastUpdatedDateString = `${lastUpdated.getDate()} ${dateUtils.getMonthByNumber(
 		lastUpdated.getMonth() + 1
 	)} ${lastUpdated.getFullYear()}`
-	const locationString = `${location?.name}, ${location?.region}, ${location?.country}`
 
 	return (
-		<div>
+		<div className='w-full'>
 			<SearchCity input={address} setInput={setAddress} />
-			<Icon type={currentWeather?.condition?.text} />
+			<div className='flex flex-col items-center justify-center gap-y-3'>
+				<div className='text-4xl'>{location?.name}</div>
 
-			<div>{currentWeather?.temp_c}°C</div>
-			<div>{currentWeather?.condition?.text}</div>
-			<div>{lastUpdatedDateString}</div>
-			<div>{`${dateUtils.getDayOFWeekByNumber(lastUpdated?.getDay())} `}</div>
-			<div>{`${lastUpdated.getHours()}: ${lastUpdated.getMinutes()}`}</div>
-			{!!currentWeather.isDay ? <div>Night</div> : <div>Day</div>}
-			<div>{locationString}</div>
+				<Icon link={currentWeather?.condition?.icon} />
+
+				<div className='text-3xl'>{currentWeather?.temp_c}°C</div>
+
+				<div>{currentWeather?.condition?.text}</div>
+				{!!currentWeather.isDay ? <div>Night</div> : <div>Day</div>}
+				<div className='italic underline text-center mb-5'>
+					Last updated:
+					<div>{`${lastUpdated.getHours()}:${lastUpdated.getMinutes()} ${dateUtils.getDayOFWeekByNumber(
+						lastUpdated?.getDay()
+					)}`}</div>
+					<div>{lastUpdatedDateString}</div>
+				</div>
+			</div>
 		</div>
 	)
 }
