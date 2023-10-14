@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import Icon from '../components/UI/Icon'
 import weatherApi from '../API/weather-api'
+import dateUtils from '../utils/date-utils'
+import Widgets from '../components/Widgets'
+import FastInfo from '../components/FastInfo'
+import { CityContext } from '../context/city-context'
 
 const MainPage = () => {
-	const [input, setInput] = useState()
 	const [currentWeather, setCurrentWeather] = useState({})
-	const date = new Date()
+	const [location, setLocation] = useState(null)
+	const [cityCoords, setCityCoords] = useState([53.1, -0.13])
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const result = await weatherApi.getCurrentWeather([53.1, -0.13])
+				const result = await weatherApi.getCurrentWeather(cityCoords)
 				setCurrentWeather(result.current)
+				setLocation(result.location)
+				console.log(result.location)
 				console.log(result.current)
 			} catch (error) {
 				console.log(error)
@@ -18,21 +25,13 @@ const MainPage = () => {
 		}
 
 		fetchData()
-	}, [])
-	console.log(currentWeather.condition?.text)
+	}, [cityCoords])
 	return (
 		<>
-			<input
-				type='text'
-				value={input}
-				onChange={e => setInput(e.target.value)}
-			/>
-
-			<Icon type={'Clear'} />
-
-			<div>{currentWeather.temp_c}</div>
-			<div>{currentWeather?.condition?.text}</div>
-			<div>{date.getDay()}</div>
+			<CityContext.Provider value={setCityCoords}>
+				<FastInfo currentWeather={currentWeather} location={location} />
+				<Widgets weatherData={currentWeather} />
+			</CityContext.Provider>
 		</>
 	)
 }
