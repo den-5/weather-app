@@ -17,8 +17,6 @@ const MainPage = () => {
 				const result = await weatherApi.getCurrentWeather(cityCoords)
 				setCurrentWeather(result.current)
 				setLocation(result.location)
-				console.log(result.location)
-				console.log(result.current)
 			} catch (error) {
 				console.log(error)
 			}

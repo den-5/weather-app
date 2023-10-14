@@ -10,7 +10,7 @@ const SearchCity = ({ input, setInput }) => {
 		async function fetchData() {
 			try {
 				const response = await locationApi.getCoordsByCityName(input)
-				console.log(response)
+
 				setCityCoords([response[0]?.latitude, response[0]?.longitude])
 			} catch (e) {
 				console.error(e)
