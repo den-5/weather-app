@@ -11,7 +11,7 @@ const SearchBar = ({ value, setValue, onSubmit }) => {
 
 	return (
 		<form
-			className='w-full bg-zinc-600 relative mt-5 md:mb-5 md:mt-0 rounded-lg'
+			className=' w-full bg-zinc-600 relative mt-5 md:mb-5 md:mt-0 rounded-lg'
 			onSubmit={customOnSubmit}
 		>
 			<input
@@ -19,7 +19,7 @@ const SearchBar = ({ value, setValue, onSubmit }) => {
 				value={value}
 				ref={searchInputRef}
 				onChange={e => setValue(e.target.value)}
-				className='bg-transparent w-full'
+				className='bg-transparent w-full px-4'
 				placeholder='find your city...'
 			/>
 			<button type='submit'>
