@@ -24,7 +24,7 @@ const SearchBar = ({ value, setValue, onSubmit }) => {
 			/>
 			<button type='submit'>
 				<img
-					src='./src/assets/images/search-icon.svg'
+					src='../../assets/images/search-icon.svg'
 					className='h-6 w-6 absolute right-0 top-0'
 					alt=''
 				/>
