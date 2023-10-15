@@ -7,7 +7,7 @@ const FastInfo = ({ currentWeather, location }) => {
 	const lastUpdated = dateUtils.setDate(currentWeather?.last_updated)
 	const [address, setAddress] = useState('Boston')
 	const lastUpdatedDateString = `${lastUpdated.getDate()} ${dateUtils.getMonthByNumber(
-		lastUpdated.getMonth() + 1
+		lastUpdated.getMonth()
 	)} ${lastUpdated.getFullYear()}`
 
 	return (
@@ -24,9 +24,7 @@ const FastInfo = ({ currentWeather, location }) => {
 				{!!currentWeather?.is_day ? <div>Night</div> : <div>Day</div>}
 				<div className='italic underline text-center mb-5'>
 					Last updated:
-					<div>{`${lastUpdated.getHours()}:${lastUpdated.getMinutes()} ${dateUtils.getDayOFWeekByNumber(
-						lastUpdated?.getDay()
-					)}`}</div>
+					<div>{`${lastUpdated.getHours()}:${lastUpdated.getMinutes()}`}</div>
 					<div>{lastUpdatedDateString}</div>
 				</div>
 			</div>
