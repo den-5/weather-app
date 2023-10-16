@@ -21,7 +21,7 @@ const FastInfo = ({ currentWeather, location }) => {
 				<div className='text-3xl'>{currentWeather?.temp_c}°C</div>
 
 				<div>{currentWeather?.condition?.text}</div>
-				{!!currentWeather?.is_day ? <div>Night</div> : <div>Day</div>}
+				{!!currentWeather?.is_day ? <div>Day</div> : <div>Night</div>}
 				<div className='italic underline text-center mb-5'>
 					Last updated:
 					<div>{`${lastUpdated.getHours()}:${lastUpdated.getMinutes()}`}</div>
